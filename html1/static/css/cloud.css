@@ -1,0 +1,170 @@
+.clouds {
+    z-index: 12;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform-origin: 50% 50%;
+}
+
+.cloud-svg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform-origin: 50% 50%;
+}
+
+.cloud-svg path {
+    fill: rgb(255, 255, 255);
+    stroke: #000000;
+    stroke-width: var(--cloud-stroke-width, 1px);
+    vector-effect: non-scaling-stroke;
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: cloud-squirm var(--cloud-squirm-duration, 1.7s) ease-in-out infinite;
+    will-change: transform;
+}
+
+.cloud-svg path:not(.title-path) {
+    filter:url(#roughen);
+}
+
+.cloud-svg svg {
+    position: absolute;
+    display: block;
+    overflow: visible;
+    will-change: scale, rotate;
+}
+
+.cloud-svg svg:not(.drawing-layer) {
+    animation: cloud-wobble var(--cloud-wobble-duration, 2.8s) ease-in-out infinite;
+}
+
+#drawing-cloud-path {
+    animation: none;
+    filter: none;
+    transform: none;
+}
+
+.cloud1 {
+    top: 3%;
+
+    width: 93%;
+    height: auto;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: block;
+    
+}
+
+.cloud1 {
+    animation-name: cloud-wobble-large;
+}
+
+.cloud1 path {
+    animation-name: cloud-squirm-large;
+}
+
+.cloud2,
+.cloud3,
+.cloud4 {
+    left: var(--cloud-x, 50%);
+    top: var(--cloud-y, 50%);
+    width: var(--cloud-width);
+    transform: translate(-50%, -50%);
+    transform-origin: 50% 50%;
+    will-change: left, top, width;
+}
+
+.cloud2 {
+    --cloud-width: 8%;
+    height: auto;
+    display: block;
+}
+
+.cloud3 {
+    --cloud-width: 6%;
+    height: auto;
+    display: block;
+}
+
+.cloud4 {
+    --cloud-width: 4%;
+    height: auto;
+    display: block;
+}
+
+@keyframes cloud-squirm {
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.015, 0.985) rotate(0.3deg);
+    }
+
+    50% {
+        transform: scale(0.985, 1.018) rotate(-0.25deg);
+    }
+
+    75% {
+        transform: scale(1.012, 0.992) rotate(0.2deg);
+    }
+}
+
+@keyframes cloud-wobble {
+    0%,
+    100% {
+        scale: 1;
+        rotate: 0deg;
+    }
+
+    35% {
+        scale: 1.006 0.996;
+        rotate: -0.18deg;
+    }
+
+    70% {
+        scale: 0.996 1.008;
+        rotate: 0.16deg;
+    }
+}
+
+@keyframes cloud-squirm-large {
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.003, 0.997) rotate(0.08deg);
+    }
+
+    50% {
+        transform: scale(0.997, 1.004) rotate(-0.07deg);
+    }
+
+    75% {
+        transform: scale(1.0025, 0.998) rotate(0.05deg);
+    }
+}
+
+@keyframes cloud-wobble-large {
+    0%,
+    100% {
+        scale: 1;
+        rotate: 0deg;
+    }
+
+    35% {
+        scale: 1.0015 0.999;
+        rotate: -0.04deg;
+    }
+
+    70% {
+        scale: 0.999 1.002;
+        rotate: 0.04deg;
+    }
+}

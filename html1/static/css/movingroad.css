@@ -1,0 +1,59 @@
+.road-track,
+.route-svg {
+    --road-height: 20%;
+    --road-speed: 60s;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    height: var(--road-height);
+    width: max-content;
+    display: flex;
+    animation: move-road var(--road-speed) linear infinite;
+}
+
+.road-track {
+    z-index: 1;
+}
+
+.route-svg {
+    z-index: 10;
+    pointer-events: none;
+}
+
+.road-track img{
+    height: 100%;
+    width: auto;
+    aspect-ratio: 14174 / 946;
+    flex: 0 0 auto;
+}
+
+.route-svg svg {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 14174 / 946;
+    flex: 0 0 auto;
+    overflow: visible;
+}   
+
+
+.route1 path {
+    fill: none;
+    vector-effect: non-scaling-stroke;
+}
+
+@keyframes move-road {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.route2 path {
+    fill: none;
+    vector-effect: non-scaling-stroke;
+}
