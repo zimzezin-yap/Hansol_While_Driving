@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <title>운전하는 한솔은</title>
+        
+        <!--전체 프레임-->
+        <link rel="stylesheet" href="static/css/frame.css">
+        <!--텍스트 스타일-->
+        <link rel="stylesheet" href="static/css/text.css?v=11">
+        <!--애니메이션 스타일-->
+        <link rel="stylesheet" href="static/css/movingroad.css?v=9">
+        <link rel="stylesheet" href="static/css/movingcar.css?v=7">
+        <link rel="stylesheet" href="static/css/cloud.css?v=14">
+        <link rel="stylesheet" href="static/css/effect.css?v=10">
+        <!--zoom-->
+        <link rel="stylesheet" href="static/css/zoom.css?v=28">
+        <link rel="stylesheet" href="static/css/zoom2.css?v=4">
+        <!--ui-->
+        <link rel="stylesheet" href="static/css/ui.css?v=5">
+    </head>
+    <body>
+
+         <svg class="svg-filters" aria-hidden="true" focusable="false" width="0" height="0">
+            <defs>
+                <filter id="roughen">
+                    <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency="0.05"
+                        numOctaves="5"
+                        seed="5"
+                        result="noise">
+                        <animate
+                            attributeName="baseFrequency"
+                            dur="2.6s"
+                            values="0.03;0.045;0.035;0.04;0.03"
+                            repeatCount="indefinite">
+                        </animate>
+                        <animate
+                            attributeName="seed"
+                            dur="1.4s"
+                            values="5;9;3;12;5"
+                            repeatCount="indefinite">
+                        </animate>
+                    </feTurbulence>
+                    <feDisplacementMap
+                        in="SourceGraphic"
+                        in2="noise"
+                        scale="3"
+                        xChannelSelector="R"
+                        yChannelSelector="G">
+                        <animate
+                            attributeName="scale"
+                            dur="1.8s"
+                            values="1;2.5;1.5;2;1"
+                            repeatCount="indefinite">
+                        </animate>
+                    </feDisplacementMap>
+                </filter>
+            </defs>
+         </svg>
+
+        <div class="app">
+            <div class="world">
+                
+                <div class="road-track">
+                    <img class="road1" src="static/image/road1.png" alt="road1">
+                    <img class="road2" src="static/image/road2.png" alt="road2">
+                    <img class="road1" src="static/image/road1.png" alt="road1">
+                    <img class="road2" src="static/image/road2.png" alt="road2">
+                </div>
+
+                <div class="route-svg">
+                    <svg class="route1"
+                        viewBox="199.4 543.03 14174 946"
+                        preserveAspectRatio="none">
+
+                        <path id="route-path1"></path>
+                    </svg>
+                    
+                    <svg class="route2"
+                        viewBox="199.4 543.03 14174 946"
+                        preserveAspectRatio="none">
+
+                        <path id="route-path2"></path>
+                    </svg>
+                    <svg class="route1"
+                        viewBox="199.4 543.03 14174 946"
+                        preserveAspectRatio="none">
+
+                        <path class="route-path1"></path>
+                    </svg>
+
+                    <svg class="route2"
+                        viewBox="199.4 543.03 14174 946"
+                        preserveAspectRatio="none">
+
+                        <path class="route-path2"></path>
+                    </svg>
+                </div>
+                
+                <div class="clouds">
+                    <div class="cloud-svg">
+                        <svg class="cloud1"
+                            viewBox="0 0 1004 1294"
+                            preserveAspectRatio="none">
+
+                            <path id="cloud-path1"></path>
+                            <path id="title-path" class="title-path"></path>
+                        </svg>
+
+                        <svg class="drawing-layer"
+                            viewBox="0 0 1004 1294"
+                            preserveAspectRatio="none">
+
+                            <defs>
+                                <filter id="drawing-cloud-feather" x="-10%" y="-10%" width="120%" height="120%">
+                                    <feGaussianBlur
+                                        in="SourceGraphic"
+                                        stdDeviation="15"
+                                        result="feather"></feGaussianBlur>
+                                </filter>
+                                <path id="drawing-cloud-path"></path>
+                                <clipPath id="drawing-cloud-clip">
+                                    <use href="#drawing-cloud-path"></use>
+                                </clipPath>
+                                <mask id="drawing-cloud-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1004" height="1294">
+                                    <rect x="0" y="0" width="1004" height="1294" fill="black"></rect>
+                                    <use
+                                        class="drawing-cloud-gradient"
+                                        href="#drawing-cloud-path"
+                                        fill="white"
+                                        filter="url(#drawing-cloud-feather)"></use>
+                                </mask>
+                            </defs>
+                            <image
+                                class="drawing-image"
+                                href="static/image/drawing.jpg"
+                                x="0"
+                                y="0"
+                                width="1004"
+                                height="1294"
+                                clip-path="url(#drawing-cloud-clip)"
+                                mask="url(#drawing-cloud-mask)"
+                                preserveAspectRatio="xMidYMid meet"></image>
+                        </svg>
+                        
+                        <svg class="cloud2"
+                            viewBox="0 0 80.04 70.87"
+                            preserveAspectRatio="none">
+
+                            <path id="cloud-path2"></path>
+                        </svg>
+
+                        <svg class="cloud3"
+                            viewBox="0 0 38.43 46.07"
+                            preserveAspectRatio="none">
+
+                            <path id="cloud-path3"></path>
+                        </svg>
+
+                        <svg class="cloud4"
+                            viewBox="0 0 25 23"
+                            preserveAspectRatio="none">
+
+                            <path id="cloud-path4"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="car">
+                    <img class="car-image" src="static/image/car.png" alt="car">
+                </div>
+
+            </div>
+
+            <div class="ui">
+                <button class="zoom-arrow zoom-arrow-up" type="button" aria-label="cloud view">
+                    <span aria-hidden="true"></span>
+                </button>
+                <button class="zoom-arrow zoom-arrow-down" type="button" aria-label="zoom view">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+
+        </div>
+
+        <script type="module" src="static/js/main.js?v=35"></script>
+    </body>
+</html>

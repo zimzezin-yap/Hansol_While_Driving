@@ -1,0 +1,19 @@
+.car {
+    z-index: 11;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 15%;
+    transform: translateX(-50%) translateY(var(--car-route-y, 0px));
+    transform-origin: 50% 100%;
+    will-change: transform;
+}
+
+.car-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform-origin: 50% 85%;
+    transform: rotate(var(--car-route-rotation, 0deg));
+    will-change: transform;
+}

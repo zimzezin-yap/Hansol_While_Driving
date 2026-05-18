@@ -1,0 +1,64 @@
+.ui {
+    --arrow-size: 30px;
+    --arrow-icon-size: calc(var(--arrow-size) * 0.33);
+    --arrow-border-width: calc(var(--arrow-size) * 0.037);
+    --arrow-icon-border-width: calc(var(--arrow-size) * 0.056);
+
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.zoom-arrow {
+    position: absolute;
+    left: 50%;
+    width: var(--arrow-size);
+    height: var(--arrow-size);
+    border: var(--arrow-border-width) solid #000000;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%);
+    transition:
+        opacity 240ms ease,
+        transform 240ms ease;
+}
+
+.zoom-arrow span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--arrow-icon-size);
+    height: var(--arrow-icon-size);
+    border-left: var(--arrow-icon-border-width) solid #000000;
+    border-top: var(--arrow-icon-border-width) solid #000000;
+}
+
+.zoom-arrow-up {
+    top: 10px;
+}
+
+.zoom-arrow-up span {
+    transform: translate(-50%, -28%) rotate(45deg);
+}
+
+.zoom-arrow-down {
+    bottom: 10px;
+}
+
+.zoom-arrow-down span {
+    transform: translate(-50%, -72%) rotate(225deg);
+}
+
+.world.is-car-zoomed ~ .ui .zoom-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.world.is-car-zoomed.is-cloud-lowered ~ .ui .zoom-arrow-up {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-12px);
+}
